@@ -6,18 +6,22 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 17:27:58 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/08/28 18:42:57 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/08/28 19:04:13 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*static	void	ft_free(char **str)
+static	void	ft_free(char **str)
 {
 	while (*str)
+	{
 		free(*str++);
+		*str = NULL;
+	}
 	free(str);
-}*/
+	str = NULL;
+}
 
 static char	**ft_join_and_split(char **av, int ac)
 {
@@ -32,6 +36,7 @@ static char	**ft_join_and_split(char **av, int ac)
 		while (av[++i])
 			str = ft_strjoin(str, av[i]);
 		result = ft_split(str, ' ');
+		free(str);
 	}
 	else
 		result = ft_split(av[1], ' ');
@@ -64,6 +69,7 @@ int	ft_split_arg(char **av, int ac, t_stack *a, t_stack *b)
 		}
 		a->num[i] = ft_atoi(result[i]);
 	}
+	ft_free(result);
 	resolve(a, b);
 	return (1);
 }

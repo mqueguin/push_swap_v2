@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 14:24:33 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/08/28 14:24:50 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/08/28 19:13:27 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ char	*str_dup(char const *s, char c)
 	int		i;
 
 	i = 0;
-	len = ft_char_count(s, c) + 1;
-	ret = (char *)malloc(sizeof(char) * len);
+	len = ft_char_count(s, c);
+	ret = (char *)malloc(sizeof(char) * len + 1);
 	if (ret == NULL)
 		return (NULL);
 	while (s[i] != c && s[i] != '\0')
