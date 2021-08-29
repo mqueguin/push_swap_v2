@@ -14,13 +14,12 @@
 
 static	void	ft_free(char **str)
 {
-	while (*str)
-	{
-		free(*str++);
-		*str = NULL;
-	}
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
 	free(str);
-	str = NULL;
 }
 
 static char	**ft_join_and_split(char **av, int ac)
@@ -31,10 +30,10 @@ static char	**ft_join_and_split(char **av, int ac)
 
 	if (ac > 2)
 	{
-		str = ft_strjoin(av[1], av[2]);
+		str = ft_strjoin(av[1], av[2], 0);
 		i = 2;
 		while (av[++i])
-			str = ft_strjoin(str, av[i]);
+			str = ft_strjoin(str, av[i], 1);
 		result = ft_split(str, ' ');
 		free(str);
 	}
@@ -53,6 +52,7 @@ int	ft_split_arg(char **av, int ac, t_stack *a, t_stack *b)
 	while (result[++i])
 		if (!ft_isdigit(result[i]))
 		{
+			ft_free(result);
 			return (ft_putendl_fd("Error", 2));
 		}
 	a = new_stack(i);
@@ -65,6 +65,7 @@ int	ft_split_arg(char **av, int ac, t_stack *a, t_stack *b)
 		{
 			stack_del(&a);
 			stack_del(&b);
+			ft_free(result);
 			return (ft_putendl_fd("Error", 2));
 		}
 		a->num[i] = ft_atoi(result[i]);

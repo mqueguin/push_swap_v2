@@ -59,7 +59,7 @@ int				ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoin(char const *s1, char const *s2, int b_free);
 char			**ft_split(char const *s, char c);
 
 t_list			*ft_lstnew(void *content);
