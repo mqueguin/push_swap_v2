@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 22:24:30 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/08/13 16:07:54 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/08/30 13:27:30 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_isdigit(char *str)
 
 	i = -1;
 	if (ft_atoi(str) > 2147483647 || ft_atoi(str) < -2147483648)
+		return (0);
+	if (ft_strlen(str) > 11)
 		return (0);
 	if (str[0] == '-' || str[0] == '+')
 		i++;

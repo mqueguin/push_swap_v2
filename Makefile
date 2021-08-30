@@ -6,7 +6,7 @@
 #    By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:36:34 by mqueguin          #+#    #+#              #
-#    Updated: 2021/08/30 11:52:41 by mqueguin         ###   ########.fr        #
+#    Updated: 2021/08/30 13:21:44 by mqueguin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJS		= ${SRCS:.c=.o}
 
 RM			= rm -f
 
-CFLAGS		=  -Wall -Wextra -Werror
+CFLAGS		=  -Wall -Wextra -Werror -fsanitize=address
 
 .c.o:
 		@${CC} ${CFLAGS} -I${HEAD} -c $< -o ${<:.c=.o}
