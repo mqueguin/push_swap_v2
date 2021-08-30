@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 17:27:58 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/08/28 19:04:13 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/08/30 11:59:37 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,10 @@ static char	**ft_join_and_split(char **av, int ac)
 	return (result);
 }
 
-int	ft_split_arg(char **av, int ac, t_stack *a, t_stack *b)
+static	int	ft_fill_stack(char **result, t_stack *a, t_stack *b)
 {
-	int		i;
-	char	**result;
+	int	i;
 
-	result = ft_join_and_split(av, ac);
-	i = -1;
-	while (result[++i])
-		if (!ft_isdigit(result[i]))
-		{
-			ft_free(result);
-			return (ft_putendl_fd("Error", 2));
-		}
-	a = new_stack(i);
-	b = new_stack(i);
-	b->len = 0;
 	i = -1;
 	while (result[++i])
 	{
@@ -70,6 +58,29 @@ int	ft_split_arg(char **av, int ac, t_stack *a, t_stack *b)
 		}
 		a->num[i] = ft_atoi(result[i]);
 	}
+	return (1);
+}
+
+int	ft_split_arg(char **av, int ac, t_stack *a, t_stack *b)
+{
+	int		i;
+	char	**result;
+
+	result = ft_join_and_split(av, ac);
+	i = -1;
+	while (result[++i])
+	{
+		if (!ft_isdigit(result[i]))
+		{
+			ft_free(result);
+			return (ft_putendl_fd("Error", 2));
+		}
+	}
+	a = new_stack(i);
+	b = new_stack(i);
+	b->len = 0;
+	if (!ft_fill_stack(result, a, b))
+		return (0);
 	ft_free(result);
 	resolve(a, b);
 	return (1);

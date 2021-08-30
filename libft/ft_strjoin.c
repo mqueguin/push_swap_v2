@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:09:14 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/08/28 14:32:15 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/08/30 11:54:08 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2, int b_free)
 	ft_strcat(str, s2);
 	if (b_free == 1)
 	{
-		free((void*)s1);
+		free((void *)s1);
 		s1 = NULL;
 	}
 	return (str);
