@@ -6,7 +6,7 @@
 /*   By: mqueguin <mqueguin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 17:27:58 by mqueguin          #+#    #+#             */
-/*   Updated: 2021/08/30 12:16:11 by mqueguin         ###   ########.fr       */
+/*   Updated: 2021/08/30 12:22:49 by mqueguin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	ft_split_arg(char **av, int ac, t_stack *a, t_stack *b)
 	if (!ft_fill_stack(result, a, b))
 		return (0);
 	ft_free(result);
-	printf("Je rentre ici\n");
 	resolve(a, b);
 	return (1);
 }
